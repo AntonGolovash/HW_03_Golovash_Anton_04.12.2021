@@ -96,9 +96,18 @@ Set_of_integers& Set_of_integers::operator-(const int integer)// удаление элемен
 			is = true;
 		}
 	}
+
 	if (is)
 	{
-
+		int new_length_of_set = --length_of_set;
+		int* new_set_of_integers = new int[new_length_of_set];
+		for (int i = 0; i < new_length_of_set; i++)
+		{
+			if (set_of_integers[i] != integer)
+			{
+				new_set_of_integers[i] = set_of_integers[i];
+			}
+		}
 	}
 }
 
