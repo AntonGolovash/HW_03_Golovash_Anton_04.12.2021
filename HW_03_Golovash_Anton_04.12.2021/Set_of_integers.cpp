@@ -7,7 +7,7 @@ using namespace std;
 Set_of_integers::Set_of_integers()// конструктор по умолчанию
 {
 	length_of_set = 10;
-	Set_of_integers:: = new int[length_of_set];
+	Set_of_integers::set_of_integers = new int[length_of_set];
 	for (int i = 0; i < length_of_set; i++)
 	{
 		set_of_integers[i] = 0;
@@ -32,14 +32,25 @@ Set_of_integers::~Set_of_integers()// деструктор
 	delete[] this;
 }
 
-bool Set_of_integers::Belonging_of_an_element_to_a_set(int element)
+bool Set_of_integers::Belonging_of_an_element_to_a_set(const int integer)
 {
-
 	return false;
 }
 
 Set_of_integers& Set_of_integers::operator+(const int integer)// добавление элемента во множество
 {
+	// проверяем множество на наличие добавляемого элемента
+	for (int i = 0; i < length_of_set; i++)
+	{
+		if (set_of_integers[i] != integer)
+		{
+			continue;
+		}
+		else
+		{
+			return *this;// если добавляемый элемент уже есть во множестве
+		}
+	}
 	int* new_set_of_integers = new int[length_of_set + 1];
 	for (int i = 0; i < length_of_set; i++)
 	{
@@ -49,9 +60,49 @@ Set_of_integers& Set_of_integers::operator+(const int integer)// добавление элем
 	length_of_set++;
 	set_of_integers = nullptr;
 	set_of_integers = new_set_of_integers;
+	return *this;
 }
 
-int& Set_of_integers::operator[](const int index)
+Set_of_integers& Set_of_integers::operator+(const Set_of_integers& other)// объединение множеств
+{
+	int new_length_of_set = length_of_set + other.length_of_set;
+	int* new_set_of_integers = new int[new_length_of_set];
+	int counter = 0;
+	for (int i = 0; i < length_of_set; i++)
+	{
+		new_set_of_integers[counter] = set_of_integers[i];
+		counter++;
+	}
+	for (int i = 0; i < other.length_of_set; i++)
+	{
+		new_set_of_integers[counter] = other[i];// здесь не работает
+		counter++;
+	}
+	length_of_set = --counter;
+	set_of_integers = nullptr;
+	set_of_integers = new_set_of_integers;
+	return *this;
+
+}
+
+Set_of_integers& Set_of_integers::operator-(const int integer)// удаление элемента из множества
+{
+	bool is = false;
+	// проверяем множество на наличие удаляемого элемента
+	for (int i = 0; i < length_of_set; i++)
+	{
+		if (set_of_integers[i] == integer)
+		{
+			is = true;
+		}
+	}
+	if (is)
+	{
+
+	}
+}
+
+int& Set_of_integers::operator[](const int index)// перегрузка оператора[]
 {
 	return set_of_integers[index];
 }
