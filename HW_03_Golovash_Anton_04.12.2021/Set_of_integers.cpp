@@ -7,11 +7,16 @@ using namespace std;
 Set_of_integers::Set_of_integers()// конструктор по умолчанию
 {
 	length_of_set = 10;
-	int* set_of_integers = new int[length_of_set];
+	Set_of_integers:: = new int[length_of_set];
+	for (int i = 0; i < length_of_set; i++)
+	{
+		set_of_integers[i] = 0;
+	}
 }
 
 Set_of_integers::Set_of_integers(int* incoming_set_of_integers)// конструктор с параметрами
 {
+	length_of_set = sizeof(*incoming_set_of_integers) / sizeof(int);
 	set_of_integers = incoming_set_of_integers;
 	incoming_set_of_integers = nullptr;
 }
@@ -39,9 +44,9 @@ Set_of_integers& Set_of_integers::operator+(const int integer)// добавление элем
 	for (int i = 0; i < length_of_set; i++)
 	{
 		new_set_of_integers[i] = set_of_integers[i];
-
 	}
 	new_set_of_integers[length_of_set] = integer;
+	length_of_set++;
 	set_of_integers = nullptr;
 	set_of_integers = new_set_of_integers;
 }
