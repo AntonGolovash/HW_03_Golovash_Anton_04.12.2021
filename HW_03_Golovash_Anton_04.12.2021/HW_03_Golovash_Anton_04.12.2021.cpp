@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-	int set1[] = { 1,2,3,4,5,6,7,8,9,10 };
+	int set1[] = { 1,2,3,8,5,9,12,74,63 };
 	int set2[] = { 1,2,3,4,5,6,7,8,9,11 };
 
 	Set_of_integers set11(set1, (sizeof(set1) / sizeof(int)));
@@ -28,11 +28,11 @@ int main()
 	set22 - 6;
 	cout << set22 << endl;
 
-	//set11 / set22;
-	//cout << set11 << endl;
+	set11 / set22;
+	cout << set11 << endl;
 
-	//set22 / set11;
-	//cout << set22 << endl;
+	set22 / set11;
+	cout << set22 << endl;
 
 }
 

@@ -129,10 +129,25 @@ Set_of_integers& Set_of_integers::operator-(const int integer)// удаление элемен
 	return *this;
 }
 
-//Set_of_integers& Set_of_integers::operator/(const Set_of_integers& other)// разность множеств
-//{
-//	// TODO: вставьте здесь оператор return
-//}
+Set_of_integers& Set_of_integers::operator/(const Set_of_integers& other)// разность множеств
+{
+	bool is = true;
+	int new_length_of_set = Set_of_integers::length_of_set;
+	int* new_set_of_integers = nullptr;
+	new_set_of_integers = new int[new_length_of_set];
+	for (int i = 0; i < length_of_set; i++)
+	{
+		if (set_of_integers[i] != other.set_of_integers[i])
+		{
+			new_set_of_integers[i] = set_of_integers[i];
+		}
+	}
+
+	Set_of_integers::length_of_set = new_length_of_set;
+	set_of_integers = nullptr;
+	set_of_integers = new_set_of_integers;
+	return *this;
+}
 
 int& Set_of_integers::operator[](const int index)// перегрузка оператора[]
 {
