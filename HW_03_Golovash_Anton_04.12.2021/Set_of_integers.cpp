@@ -65,30 +65,29 @@ Set_of_integers& Set_of_integers::operator+(const int integer)// добавление элем
 	return *this;
 }
 
-//Set_of_integers& Set_of_integers::operator+(const Set_of_integers& other)// объединение множеств
-//{
-//	int new_length_of_set = length_of_set + other.length_of_set;
-//	int* new_set_of_integers = new int[new_length_of_set];
-//	int counter = 0;
-//
-//	for (int i = 0; i < length_of_set; i++)
-//	{
-//		new_set_of_integers[counter] = set_of_integers[i];
-//		counter++;
-//	}
-//
-//	for (int i = 0; i < other.length_of_set; i++)
-//	{
-//		new_set_of_integers[counter] = other[i];// здесь не работает
-//		counter++;
-//	}
-//
-//	length_of_set = --counter;
-//	set_of_integers = nullptr;
-//	set_of_integers = new_set_of_integers;
-//	return *this;
-//
-//}
+Set_of_integers& Set_of_integers::operator+(const Set_of_integers& other)// объединение множеств
+{
+	int new_length_of_set = length_of_set + other.length_of_set;
+	int* new_set_of_integers = new int[new_length_of_set];
+	int counter = 0;
+
+	for (int i = 0; i < length_of_set; i++)
+	{
+		new_set_of_integers[counter] = set_of_integers[i];
+		counter++;
+	}
+
+	for (int i = 0; i < other.length_of_set; i++)
+	{
+		new_set_of_integers[counter] = other.set_of_integers[i];
+		counter++;
+	}
+
+	length_of_set = --counter;
+	set_of_integers = nullptr;
+	set_of_integers = new_set_of_integers;
+	return *this;
+}
 
 Set_of_integers& Set_of_integers::operator-(const int integer)// удаление элемента из множества
 {
@@ -133,4 +132,18 @@ Set_of_integers& Set_of_integers::operator-(const int integer)// удаление элемен
 int& Set_of_integers::operator[](const int index)// перегрузка оператора[]
 {
 	return set_of_integers[index];
+}
+
+ostream& operator<< (ostream& out, const Set_of_integers& date)
+{
+	out << "set " << date << "{ ";
+
+	for (int i = 0; i < date.length_of_set; i++)
+	{
+		out << to_string(date.set_of_integers[i]) << ", ";
+	}
+
+	out << " }" << endl;
+
+	return out;
 }
