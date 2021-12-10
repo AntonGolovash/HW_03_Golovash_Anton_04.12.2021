@@ -65,7 +65,7 @@ Set_of_integers& Set_of_integers::operator+(const int integer)// добавление элем
 	return *this;
 }
 
-Set_of_integers& Set_of_integers::operator+(const Set_of_integers& other)// объединение множеств
+Set_of_integers& Set_of_integers::operator+=(const Set_of_integers& other)// объединение множеств
 {
 	int new_length_of_set = length_of_set + other.length_of_set;
 	int* new_set_of_integers = new int[new_length_of_set];
@@ -127,6 +127,11 @@ Set_of_integers& Set_of_integers::operator-(const int integer)// удаление элемен
 	set_of_integers = nullptr;
 	set_of_integers = new_set_of_integers;
 	return *this;
+}
+
+Set_of_integers& Set_of_integers::operator/(const Set_of_integers& other)// разность множеств
+{
+	// TODO: вставьте здесь оператор return
 }
 
 int& Set_of_integers::operator[](const int index)// перегрузка оператора[]

@@ -15,9 +15,9 @@ public:
 	bool Belonging_of_an_element_to_a_set(const int integer);
 	friend ostream& operator << (ostream& out, const Set_of_integers& date);
 	Set_of_integers& operator+ (const int integer);// добавление элемента во множество
-	Set_of_integers& operator+ (const Set_of_integers& other);// объединение множеств
+	Set_of_integers& operator+= (const Set_of_integers& other);// объединение множеств
 	Set_of_integers& operator- (const int integer);// удаление элемента из множества
-	//Set_of_integers& operator- (const Set_of_integers& other_object);// разность множеств
+	Set_of_integers& operator/ (const Set_of_integers& other);// разность множеств
 	//Set_of_integers& operator* ();// пересечение множеств
 	//Set_of_integers& operator= (const Set_of_integers& object);// присваивание множества
 	//Set_of_integers& operator== (const Set_of_integers& other_object);// сравнение множеств

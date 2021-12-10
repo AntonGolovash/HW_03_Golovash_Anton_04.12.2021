@@ -16,10 +16,10 @@ int main()
 	cout << set11 << endl;
 	cout << set22 << endl;
 
-	set11 + set22;
+	set11 += set22;
 	cout << set11 << endl;
 
-	set22 + set11;
+	set22 += set11;
 	cout << set22 << endl;
 
 	set11 + 12;
@@ -27,5 +27,12 @@ int main()
 
 	set22 - 6;
 	cout << set22 << endl;
+
+	set11 / set22;
+	cout << set11 << endl;
+
+	set22 / set11;
+	cout << set22 << endl;
+
 }
 
