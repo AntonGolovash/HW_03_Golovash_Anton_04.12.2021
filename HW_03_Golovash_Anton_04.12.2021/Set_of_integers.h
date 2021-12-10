@@ -17,7 +17,7 @@ public:
 	Set_of_integers& operator+ (const int integer);// добавление элемента во множество
 	Set_of_integers& operator+= (const Set_of_integers& other);// объединение множеств
 	Set_of_integers& operator- (const int integer);// удаление элемента из множества
-	Set_of_integers& operator/ (const Set_of_integers& other);// разность множеств
+	//Set_of_integers& operator/ (const Set_of_integers& other);// разность множеств
 	//Set_of_integers& operator* ();// пересечение множеств
 	//Set_of_integers& operator= (const Set_of_integers& object);// присваивание множества
 	//Set_of_integers& operator== (const Set_of_integers& other_object);// сравнение множеств

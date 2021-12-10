@@ -129,10 +129,10 @@ Set_of_integers& Set_of_integers::operator-(const int integer)// удаление элемен
 	return *this;
 }
 
-Set_of_integers& Set_of_integers::operator/(const Set_of_integers& other)// разность множеств
-{
-	// TODO: вставьте здесь оператор return
-}
+//Set_of_integers& Set_of_integers::operator/(const Set_of_integers& other)// разность множеств
+//{
+//	// TODO: вставьте здесь оператор return
+//}
 
 int& Set_of_integers::operator[](const int index)// перегрузка оператора[]
 {
