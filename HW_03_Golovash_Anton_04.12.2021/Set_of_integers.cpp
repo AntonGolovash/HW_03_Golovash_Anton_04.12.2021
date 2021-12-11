@@ -6,11 +6,11 @@ using namespace std;
 
 Set_of_integers::Set_of_integers()// конструктор по умолчанию
 {
-	length_of_set = 10;
+	Set_of_integers::length_of_set = 10;
 	Set_of_integers::set_of_integers = new int[length_of_set];
 	for (int i = 0; i < length_of_set; i++)
 	{
-		set_of_integers[i] = 0;
+		Set_of_integers::set_of_integers[i] = 0;
 	}
 }
 
@@ -83,7 +83,7 @@ Set_of_integers& Set_of_integers::operator+=(const Set_of_integers& other)// объ
 		counter++;
 	}
 
-	length_of_set = --counter;
+	length_of_set = counter;
 	set_of_integers = nullptr;
 	set_of_integers = new_set_of_integers;
 	return *this;
@@ -108,12 +108,14 @@ Set_of_integers& Set_of_integers::operator-(const int integer)// удаление элемен
 	if (is)
 	{
 		new_set_of_integers = new int[new_length_of_set];
+		new_length_of_set = 0;
 		int to = 0;
 		for (int from = 0; from < length_of_set; from++)
 		{
 			if (set_of_integers[from] != integer)
 			{
 				new_set_of_integers[to] = set_of_integers[from];
+				new_length_of_set++;
 				to++;
 			}
 			else
@@ -121,31 +123,50 @@ Set_of_integers& Set_of_integers::operator-(const int integer)// удаление элемен
 				from++;
 			}
 		}
+		Set_of_integers::length_of_set = new_length_of_set;
+		set_of_integers = nullptr;
+		set_of_integers = new_set_of_integers;
 	}
-
-	Set_of_integers::length_of_set = new_length_of_set;
-	set_of_integers = nullptr;
-	set_of_integers = new_set_of_integers;
 	return *this;
 }
 
 Set_of_integers& Set_of_integers::operator/(const Set_of_integers& other)// разность множеств
 {
-	bool is = true;
-	int new_length_of_set = Set_of_integers::length_of_set;
-	int* new_set_of_integers = nullptr;
-	new_set_of_integers = new int[new_length_of_set];
+	int new_length_of_set = Set_of_integers::length_of_set;// длина временного массива
+	int* new_set_of_integers = new int[new_length_of_set];// выделение памяти для временного массива
+	int new_set_of_integers_counter = 0;// счётчик количества записанных элементов во временный массив
+	bool element_is_not_present = false;
 	for (int i = 0; i < length_of_set; i++)
 	{
-		if (set_of_integers[i] != other.set_of_integers[i])
+		if (element_is_not_present)
 		{
-			new_set_of_integers[i] = set_of_integers[i];
+			new_set_of_integers[new_set_of_integers_counter] = set_of_integers[i];
+			new_set_of_integers_counter++;
+		}
+		for (int j = 0; j < other.length_of_set; j++)
+		{
+			if (set_of_integers[i] == other.set_of_integers[j])
+			{
+				element_is_not_present = false;
+				break;
+			}
+			if (set_of_integers[i] != other.set_of_integers[j])
+			{
+				element_is_not_present = true;
+			}
 		}
 	}
 
-	Set_of_integers::length_of_set = new_length_of_set;
+	int* new_set_of_integers_2 = new int[new_set_of_integers_counter];
+
+	for (int i = 0; i < new_set_of_integers_counter; i++)
+	{
+		new_set_of_integers_2[i] = new_set_of_integers[i];
+	}
+
+	Set_of_integers::length_of_set = new_set_of_integers_counter;
 	set_of_integers = nullptr;
-	set_of_integers = new_set_of_integers;
+	set_of_integers = new_set_of_integers_2;
 	return *this;
 }
 
@@ -156,14 +177,14 @@ int& Set_of_integers::operator[](const int index)// перегрузка оператора[]
 
 ostream& operator<< (ostream& out, const Set_of_integers& date)
 {
-	out << "set " << date << "{ ";
+	out << "set " << date.set_of_integers << "{ ";
 
 	for (int i = 0; i < date.length_of_set; i++)
 	{
 		out << to_string(date.set_of_integers[i]) << ", ";
 	}
 
-	out << " }" << endl;
+	out << "}" << endl;
 
 	return out;
 }
