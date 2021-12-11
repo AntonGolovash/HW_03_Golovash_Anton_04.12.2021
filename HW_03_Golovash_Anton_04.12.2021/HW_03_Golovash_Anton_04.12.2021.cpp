@@ -20,10 +20,8 @@ int main()
 	set11 += set22;
 	cout << "Множество set11 += set22\n" << set11 << endl;
 
-
 	set22 += set11;
 	cout << "Множество set22 += set11\n" << set22 << endl;
-
 
 	set11 + 999;
 	cout << "Множество set11 + 999\n" << set11 << endl;
