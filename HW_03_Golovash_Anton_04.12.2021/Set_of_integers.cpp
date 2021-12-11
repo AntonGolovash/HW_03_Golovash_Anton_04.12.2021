@@ -105,7 +105,7 @@ Set_of_integers& Set_of_integers::operator-(const int integer)// удаление элемен
 		}
 	}
 
-	if (is)
+	if (is)// если удаляемый элемент найден
 	{
 		new_set_of_integers = new int[new_length_of_set];
 		new_length_of_set = 0;
@@ -117,10 +117,6 @@ Set_of_integers& Set_of_integers::operator-(const int integer)// удаление элемен
 				new_set_of_integers[to] = set_of_integers[from];
 				new_length_of_set++;
 				to++;
-			}
-			else
-			{
-				from++;
 			}
 		}
 		Set_of_integers::length_of_set = new_length_of_set;

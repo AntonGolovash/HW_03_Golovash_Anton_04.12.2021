@@ -31,6 +31,9 @@ int main()
 	set22 - 9999;
 	cout << "Множество set22 - 9999\n" << set22 << endl;
 
+	set22 - 6;
+	cout << "Множество set22 - 6\n" << set22 << endl;
+
 	set11 / set22;
 	cout << "Разность множеств set11 / set22\n" << set11 << endl;
 
